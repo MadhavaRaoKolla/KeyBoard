@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.heading {
+    width: 100%;
+    height: 10vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4eca6;
+    font-size: 1.8em;
+    font-family: Noto Sans;
+}
+
+.area, .textarea {
+    height: 30vh; 
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+.area{
+    margin-top: 55px;
+}
+
+.textarea{
+    font-size: 2em;
+    border-radius: 5px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    height: 40vh; 
+    width: 65%;
+    justify-content: space-between;
+    background-color: #d9debd;
+    margin-top: 45px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    height: 20%; 
+    border: 1px solid #e0ebb8;
+    width: 100%;
+}
+
+.key {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: Noto Sans;
+}
+
+.shift{
+    width: 120%;
+}
+
+.caps{
+    width: 85%;
+    font-size: 1.3em;
+}
+
+.tab{
+    width: 70%;
+    font-size: 1.4em;
+}
+
+.backtick{
+    width: 50%;
+}
+
+.backspace{
+    width: 110%;
+    font-size: 1.2em;
+}
+
+.key.active{
+    background-color: #141413;
+    color: white;
+}
