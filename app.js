@@ -1,34 +1,73 @@
-let keys = document.querySelectorAll(".key");
-let space = document.querySelector('.space');
+let keys = document.querySelectorAll(".key"); //all keys
+let space = document.querySelector('.space'); 
 let caps = document.querySelector('.caps');
 let tab = document.querySelector('.tab');
 let shiftLeft = document.querySelector('.shift_left');
 let shiftRight = document.querySelector('.shift_right');
-let alphs = document.querySelectorAll('.alph');
+let backspace = document.querySelector('.backspace');
+let textArea = document.querySelector('.textarea');
+let alphs = document.querySelectorAll('.alph'); //alphabets
 let isCapsOn = false;
 
-for (let i = 0; i < keys.length; i++) {
-    keys[i].setAttribute('keyName', keys[i].innerText);
-    keys[i].setAttribute('upperCase', keys[i].innerText.toUpperCase());
+for (let i = 0; i<keys.length; i++) {
+    keys[i].setAttribute('lowerCase', keys[i].innerText.toLowerCase()); //keys
+    keys[i].setAttribute('upperCase', keys[i].innerText.toUpperCase()); //capitals
 }
 
-// Function to switch to uppercase
 const capsOn = () => {
     for (let i = 0; i < alphs.length; i++) {
         alphs[i].innerText = alphs[i].innerText.toUpperCase();
     }
 };
 
-// Function to switch to lowercase
 const capsOff = () => {
     for (let i = 0; i < alphs.length; i++) {
         alphs[i].innerText = alphs[i].innerText.toLowerCase();
     }
 };
 
+const handleClick = (e) => {
+    let keyValue = e.target.getAttribute('lowerCase');
+    let upperCaseValue = e.target.getAttribute('upperCase');   
+    switch(keyValue){
+        case "backspace":
+            textArea.value = textArea.value.substr(0,textArea.value.length-1);
+            break;
+        case "tab":
+            textArea.value += "\t";
+            break;
+        case "enter":
+            textArea.value += "\n";
+            break;
+        case "shift":
+            textArea.value += "";
+            break;
+        case "space":
+            textArea.value += " ";
+            break;
+        case "caps":
+            if(isCapsOn) capsOff();
+            else capsOn();
+            isCapsOn=!isCapsOn;
+            break;
+        default:
+            if (isCapsOn) textArea.value += upperCaseValue;
+            else textArea.value += keyValue;        
+    }
+    e.target.classList.add('active');
+    setTimeout(() => {
+        e.target.classList.remove('active');
+    }, 100);
+};
+
+for (let i = 0; i<keys.length; i++) {
+    keys[i].addEventListener('click', handleClick);
+}
+
+//keyboard pressing 
 window.addEventListener("keydown", (e) => {
     for (let i = 0; i < keys.length; i++) {
-        if ((e.key == keys[i].getAttribute('keyName')) || (e.key == keys[i].getAttribute('upperCase'))) {
+        if ((e.key == keys[i].getAttribute('lowerCase')) || (e.key == keys[i].getAttribute('upperCase'))) {
             keys[i].classList.add('active');
         }
     }
@@ -36,14 +75,14 @@ window.addEventListener("keydown", (e) => {
         space.classList.add('active');
     }
     if (e.code == "CapsLock") {
+        console.log(isCapsOn)
         isCapsOn = !isCapsOn;
+        console.log(isCapsOn);
         caps.classList.add("active")
         if (isCapsOn) {
             capsOn();
-            // caps.classList.add('active');
         } else {
             capsOff();
-            // caps.classList.remove('active');
         }
     }
     if (e.code == "Tab") {
@@ -59,9 +98,11 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+
+//keyboard releasing
 window.addEventListener("keyup", (e) => {
     for (let i = 0; i < keys.length; i++) {
-        if ((e.key == keys[i].getAttribute('keyName')) || (e.key == keys[i].getAttribute('upperCase'))) {
+        if ((e.key == keys[i].getAttribute('lowerCase')) || (e.key == keys[i].getAttribute('upperCase'))) {
             keys[i].classList.remove('active');
         }
     }
@@ -72,12 +113,13 @@ window.addEventListener("keyup", (e) => {
         tab.classList.remove('active');
     }
     if(e.code == "CapsLock"){
+        // console.log(isCapsOn)
         caps.classList.remove("active")
     }
-    // if(e.code == "ShiftLeft"){
-    //     shiftLeft.classList.remove('active');
-    // }
-    // if(e.code == "ShiftRight"){
-    //     shiftRight.classList.remove('active');
-    // }
+    if(e.code == "ShiftLeft"){
+        shiftLeft.classList.remove('active');
+    }
+    if(e.code == "ShiftRight"){
+        shiftRight.classList.remove('active');
+    }
 });
