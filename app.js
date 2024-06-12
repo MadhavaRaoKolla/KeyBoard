@@ -1,6 +1,7 @@
 let keys = document.querySelectorAll(".key"); //all keys
 let space = document.querySelector('.space'); 
 let caps = document.querySelector('.caps');
+let enter = document.querySelector('.enter');
 let tab = document.querySelector('.tab');
 let shiftLeft = document.querySelector('.shift_left');
 let shiftRight = document.querySelector('.shift_right');
@@ -96,6 +97,12 @@ window.addEventListener("keydown", (e) => {
         shiftLeft.classList.remove("active");
         shiftRight.classList.add("active");
     }
+    if(e.code == "Enter"){
+        enter.classList.add('active');
+    }
+    if(e.code == "Backspace"){
+        backspace.classList.add('active');
+    }
 });
 
 
@@ -121,5 +128,11 @@ window.addEventListener("keyup", (e) => {
     }
     if(e.code == "ShiftRight"){
         shiftRight.classList.remove('active');
+    }
+    if(e.code == "Enter"){
+        enter.classList.remove('active');
+    }
+    if(e.code == "Backspace"){
+        backspace.classList.remove('active');
     }
 });
