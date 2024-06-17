@@ -98,6 +98,10 @@ body {
     background-color: #FFE082;
 }
 
+.keys.active{
+    background-color: #bdbfc0;
+}
+
 @media (max-width: 450px) {
     .keyboard{ width: 340px; }
     .heading{font-size: 1em;}

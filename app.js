@@ -136,7 +136,6 @@
 //         backspace.classList.remove('active');
 //     }
 // });
-
 let keyValues = [
     "`","1","2","3","4","5","6","7","8","9","0","-","=","backspace",
     "tab","q","w","e","r","t","y","u","i","o","p","[","]","|",
@@ -159,12 +158,16 @@ keyValues.forEach((elem, index) => {
             key.classList.add("backtick");
             key.addEventListener("click",() => {
                 textArea.value += "`";
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
             break;
         case "backspace":
             key.classList.add("back");
             key.addEventListener("click", () => {
                 textArea.value = textArea.value.substr(0, textArea.value.length - 1);
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
             key.innerHTML = "Backspace";
             break;
@@ -172,12 +175,16 @@ keyValues.forEach((elem, index) => {
             key.classList.add("tab");
             key.addEventListener("click", () => {
                 textArea.value += "\t";
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
             key.innerHTML = "Tab";
             break;
         case "caps":
             key.classList.add("wide");
             key.addEventListener("click", () => {
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
                 isCaps = !isCaps;
                 updateKeys();
             });
@@ -187,6 +194,8 @@ keyValues.forEach((elem, index) => {
             key.classList.add("wide");
             key.addEventListener("click", () => {
                 textArea.value += "\n";
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
             key.innerHTML = "Enter";
             break;
@@ -198,12 +207,16 @@ keyValues.forEach((elem, index) => {
             key.classList.add("space");
             key.addEventListener("click", () => {
                 textArea.value += " ";
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
             key.innerHTML = "Space";
             break;
         default:
             key.addEventListener("click", () => {
                 textArea.value += isCaps ? elem.toUpperCase() : elem;
+                key.classList.add("active");
+                setTimeout(()=> {key.classList.remove("active")},100);
             });
     }
     keyboard.appendChild(key);
@@ -219,9 +232,21 @@ function updateKeys() {
 
 document.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
-    // console.log(event)
     if (key === 'capslock') {
         isCaps = !isCaps;
         updateKeys();
     }
+    document.querySelectorAll(".keys").forEach((elem) => {
+        if (elem.textContent.toLowerCase() === key || (key === ' ' && elem.textContent === 'Space')) {
+            elem.classList.add('active');
+        }
+    });
 });
+
+document.addEventListener('keyup', () => {
+    document.querySelectorAll(".keys").forEach((elem) => {
+        elem.classList.remove('active');
+    });
+});
+
+git
