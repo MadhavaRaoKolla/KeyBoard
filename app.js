@@ -243,10 +243,11 @@ document.addEventListener('keydown', (event) => {
     });
 });
 
+
 document.addEventListener('keyup', () => {
     document.querySelectorAll(".keys").forEach((elem) => {
         elem.classList.remove('active');
     });
 });
 
-git
+
