@@ -3,218 +3,183 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
     width: 100%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
     background-color: #d0cccc;
 }
 
 .heading {
     width: 100%;
-    height: 12vh; 
+    height: 12vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
     background-color: #aad8e4;
-    font-size: 2em;
-    font-family: Nunito Sans;
-    font-weight: 650;
+    margin-bottom: 20px;
 }
 
-.area, .textarea {
-    height: 20vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px 0px;
+.area {
+    margin-bottom: 20px;
 }
 
-.textarea{
-    font-size: 1.5em;
+.textarea {
+    width: 100%;
     border-radius: 5px;
-    font-family: Actor;
-    width: 50vw;
+    max-width: 600px;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
     background-color: #e2e0df;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .keyboard {
     display: flex;
-    flex-direction: column;
-    height: 45vh; 
-    width: 75%;
-    margin-top: 30px;
-}
-
-.row {
-    display: flex;
-    justify-content: space-around;
-    height: 19%; 
-    width: 100%;
-}
-
-.key {
-    width: 250px;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.keys {
+    width: 50px;
+    height: 50px;
     margin: 1px;
+    font-size: 1.3rem;
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0px 0px 5px rgb(14,13,13);
-    font-size: 1.6em;
+    border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 5px rgb(14,13,13);
     font-family: Nunito Sans;
 }
-    
-.number{
-    font-size: 1.4em;
+
+.backtick {
+   width: 50px;
+   background-color: #FFCDD2;
 }
 
-.backtick{
-        width: 150px;
-        background-color: #FFCDD2;
-}
-    
-.backspace{
-        width: 40%;
-        font-size: 1em;
-        background-color: #BBDEFB;
+.back {
+    width: 100px;
+    background-color: #BBDEFB;
+    font-size: 1.1em;
 }
 
-.tab{
-    width: 270px;
-    font-size: 1.4em;
+.tab {
+    width: 97px;
     background-color: #F8BBD0;
 }
 
-.caps{
-    width: 360px;
-    font-size: 1.3em;
+.wide {
+    width: 100px;
     background-color: #E1BEE7;
 }
 
-.enter { 
-    width: 430px;
-    font-size: 1.5em;
-    background-color: #C8E6C9; 
-}
-
-.shift{
-    width: 535px;
-    font-size: 1.5em;
+.shift {
+    width: 125px;
     background-color: #D1C4E9;
 }
 
-.spacebar{
-    background-color: #dad6d6;
+.keys.space {
+    width: 775px;
+    background-color: #FFE082;
 }
 
-.space { 
-    width: 100%;
-    background-color: #FFE082; 
+.keys.active{
+    background-color: #bdbfc0;
 }
 
-.key.active{
-    background-color: #bcb8b8;
-    color: rgb(24, 23, 23);
-}
-
-@media( max-width:350px){
-    .heading{
-        font-size: 1.5em;
-    }
-    .keyboard{
-        width: 100%;
-        height: 22vh;
-    }
-    .key{
-        font-size: 1em;
-        border-radius: 5px;
+@media (max-width: 450px) {
+    .keyboard{ width: 340px; }
+    .heading{font-size: 1em;}
+    .textarea{ width: 250px;}
+    .keys,.backtick{
+        height: 20px;
+        width: 22px;
         margin: 0;
+        font-size: 0.7em;
     }
-    .backspace{
-        font-size: 0.5em;
+    .back{  width: 40px;font-size: 0.3em; }
+    .tab{ width: 38px;font-size: 0.5em; }
+    .wide{  width: 40px; font-size: 0.5em; }
+    .shift{ width: 52px; font-size: 0.5em; }
+    .keys.space{ width: 325px; font-size: 0.8em;}
+}
+@media (min-width: 370px) and (max-width: 450px) {
+    .keyboard{ width: 370px; }
+    .heading{font-size: 1.4em;}
+    .textarea{ width: 300px;}
+    .keys,.backtick{
+        height: 24px;
+        width: 24px;
+        margin: 0;
+        font-size: 0.7em;
     }
-    .tab,.caps,.enter,.shift{
-        font-size: 0.8em;
-    }
+    .back{  width: 46px;font-size: 0.5em; }
+    .tab{ width: 46px;font-size: 0.7em; }
+    .wide{  width: 47px; font-size: 0.7em; }
+    .shift{ width: 59px; font-size: 0.7em; }
+    .keys.space{ width: 360px; font-size: 0.8em;}
 }
 
-@media (min-width:350px) and (max-width:550px){
-    .keyboard{
-        width: 98%;
-        height: 26vh;
-    }
-    .key{
-        font-size: 1.1em;
-        border-radius: 0;
-        margin: 0.1px;
-        border-radius: 5px;
-        font-weight: 550;
-    }
-    .backspace{
-        font-size: 0.6em; font-weight: 550;
-    }
-    .tab,.caps,.enter,.shift{
-        font-size: 0.9em;font-weight: 550;
-    }
-}
-
-@media (min-width:550px) and (max-width:700px){
-    .keyboard{
-        width: 95%;
-        height: 30vh;
-    }
-    .key{    
-        font-size: 1.3em;
-        border-radius: 0;
-        margin: 0.2px;
-        border-radius: 5px;
-    }
-    .backspace{
+@media (min-width: 450px) and (max-width: 550px) {
+    .keyboard{ width: 450px; }
+    .heading{font-size: 1.5em;}
+    .textarea{ width: 400px;}
+    .keys,.backtick{
+        height: 30px;
+        width: 30px;
+        margin: 0;
         font-size: 0.9em;
     }
-    .tab,.caps,.enter,.shift{
+    .back{  width: 57px;font-size: 0.7em; }
+    .tab{ width: 55px;font-size: 0.8em; }
+    .wide{  width: 58px; font-size: 0.8em; }
+    .shift{ width: 73px; font-size: 0.8em; }
+    .keys.space{ width: 520px; font-size: 0.9em;}
+}
+
+@media (min-width: 550px) and (max-width: 650px) {
+    .keyboard{ width: 550px; }
+    .heading{font-size: 1.5em;}
+    .textarea{ width: 400px;}
+    .keys,.backtick{
+        height: 35px;
+        width: 35px;
+        margin: 0;
         font-size: 1em;
     }
+    .back{  width: 60px;font-size: 0.8em; }
+    .tab{ width: 60px;font-size: 1em; }
+    .wide{  width: 65px; font-size: 1em; }
+    .shift{ width: 83px; font-size: 1em; }
+    .keys.space{ width: 520px;}
 }
 
-@media(min-width:700px) and (max-width:850px){
-    .keyboard{
-        width: 90%;
-        height: 31vh;
-    }
-    .key{
-        margin: 0.5px;
-        font-size: 1.3em;
-    }
-    .tab,.caps,.enter,.shift{
-        font-size: 1.1em;
-    }
-    .backspace{
+@media (min-width: 650px) and (max-width: 800px) {
+    .keyboard{ width: 650px; }
+    .keys,.backtick{
+        height: 42px;
+        width: 42px;
+        margin: 0;
         font-size: 1em;
     }
-}
-
-@media (min-width:850px) and (max-width:1030px){
-    .keyboard{
-        width: 85%;
-        height: 33vh;
-    }
-}
-
-@media(min-width:1030px) and (max-width:1150px){
-    .keyboard{
-        width: 83%;
-        height: 39vh;
-    }
+    .back{  width: 70px;font-size: 0.9em; }
+    .tab{ width: 68px;font-size: 1em; }
+    .wide{  width: 76px; font-size: 1em; }
+    .shift{ width: 97px; font-size: 1em; }
+    .keys.space{ width: 620px;}
 }
